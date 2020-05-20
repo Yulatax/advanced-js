@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Control System</title>
+</head>
+<body>
+    <script src="fcs.js"></script>
+    <script>
+        const ticket1 = buyTicket('BH118', makeTime(8, 58), 'Goder Alex');
+        const ticket2 = buyTicket('BH118', makeTime(9, 0), 'Lion Viki');
+        console.table(flightReport('BH118', makeTime(9, 30)));
+        eRegistration(ticket2.id, ticket2.fullName, makeTime(10, 1));
+        eRegistration(ticket1.id, ticket1.fullName, makeTime(13, 45));
+        console.table(flightReport('BH118', makeTime(14, 0)));
+    </script>
+</body>
+</html>
