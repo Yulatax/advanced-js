@@ -44,13 +44,13 @@ function encodeText(text) {
 function createDictionary(text) {
     return text.split(' ')
         .reduce((dictionary, word) => {
-            const wordInDictionary = dictionary.find(elem => { return elem.word === word});
+            const wordInDictionary = dictionary.find(elem => elem.word === word);
 
             if (wordInDictionary) {
-                const ind = dictionary.indexOf(wordInDictionary);
-                dictionary[ind].count++;
+                wordInDictionary.count++;
             } else {
-                const codes = dictionary.map(elem => { return elem.code });
+                const codes = dictionary.map(elem => elem.code );
+                // console.log(codes);
                 let code = '';
                 do {
                     code = generateWordCode(2);
@@ -76,7 +76,7 @@ function generateWordCode(length) {
 function translateText(text, dictionary) {
     return text.split(' ')
         .reduce((codes, word) => {
-            const wordElement = dictionary.find(elem => { return elem.word === word});
+            const wordElement = dictionary.find(elem => elem.word === word);
             codes.push(wordElement.code);
             return codes;
         }, [])
