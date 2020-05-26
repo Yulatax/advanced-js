@@ -20,11 +20,12 @@
  * положительных элементов массива
  */
 function sumOfPositive(arr) {
-    return arr.reduce((total, elem) => {
-        if (typeof elem === 'number' && elem > 0) {
-            total.count++;
-            total.sum += elem;
-        }
-        return total;
-    }, {count: 0, sum: 0})
+    const filtered = arr.filter(elem => typeof elem === 'number' && elem > 0);
+    const sum = filtered.reduce((acc, item) => acc + item, 0);
+    return {
+        count: filtered.length,
+        sum
+    }
 }
+
+console.log(sumOfPositive([-91, -93, -45, 67, 96, 40, -34, 96, -42, 58]));

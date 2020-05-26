@@ -31,14 +31,13 @@
 
 function wordStat(text) {
     return text.split(' ')
-                .reduce((total, word) => {
-                    total.push({
+                .map(word => {
+                    return {
                         word,
                         code: calculateCodesSum(word)
-                    });
-                    return total;
-                }, [])
-        }
+                    };
+                })
+}
 
 /**
  * Функция прининимает слово и возвращает код, который является суммой кодов символов этого слова
@@ -49,9 +48,7 @@ function wordStat(text) {
 
 function calculateCodesSum(word) {
     return word.split('')
-                .reduce((total, letter) => {
-                    return total += letter.charCodeAt(0);
-                }, 0);
+                .reduce((total, letter) => total + letter.charCodeAt(0), 0);
 }
 
 const text = 'Lorem ipsum dolor sit amet.';
