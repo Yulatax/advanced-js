@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Flight Control System</title>
+</head>
+<body>
+    <div class="form-wrapper">
+        <h3>Ticket booking form</h3>
+        <div class="error-message"></div>
+        <form id="ticketForm" method="post">
+            <div class="full-name">
+                <label for="fname">Full name</label>
+                <input id="fname" type="text" name="fname" class="form-control">
+            </div>
+            <div class="flight">
+                <div class="flight-number">
+                    <label for="flight">Flight number</label>
+                    <select id="flight" name="flight" class="form-control">
+                        <option value="">Choose flight...</option>
+                        <option value="BH118">BH118</option>
+                    </select>
+                    <div class="select-arrow"></div>
+                </div>
+                <div class="flight-class">
+                    <label for="fclass">Class</label>
+                    <select id="fclass" name="fclass" class="form-control">
+                        <option value="0">Standart</option>
+                        <option value="1">Business</option>
+                    </select>
+                    <div class="select-arrow"></div>
+                </div>
+            </div>
+            <div class="time">
+                <div class="ticket-hours">
+                    <label for="hours">Hours</label>
+                    <input id="hours" type="number" class="form-control" name="hours" min="0" max="24" value="0">
+                </div>
+                <div class="ticket-minutes">
+                    <label for="minutes">Minutes</label>
+                    <input id="minutes" type="number" class="form-control" name="minutes" min="0" max="60" value="0">
+                </div>
+            </div>
+            <div class="buy-button">
+                <input type="submit" value="Buy">
+            </div>
+        </form>
+    </div>
+    <script src="fcs.js"></script>
+    <script src="fcs.utils.js"></script>
+    <script src="add-flight.js"></script>
+    <script src="buy-ticket.js"></script>
+    <script src="e-registration.js"></script>
+    <script src="flight-report.js"></script>
+    <script src="flight-details.js"></script>
+    <script src="script.js"></script>
+    <script src="form-handler.js"></script>
+</body>
+</html>

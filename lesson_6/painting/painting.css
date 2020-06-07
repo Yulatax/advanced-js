@@ -1,0 +1,25 @@
+
+.painting-wrapper {
+    width: 700px;
+    margin: 50px auto;
+    border: 1px solid transparent;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 -2px 10px rgba(0,0,0,0.22);
+}
+
+.painting-wrapper table {
+    margin: 50px auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    cursor: pointer;
+}
+
+.painting-wrapper table td {
+    box-sizing: border-box;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+}
+
+.painting-wrapper .palette td:active {
+    outline: 2px solid black;
+}
