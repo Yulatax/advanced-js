@@ -3,7 +3,7 @@ let ticketForm = document.querySelector('#ticketForm');
 if (ticketForm) {
     ticketForm.addEventListener('submit', ticketFormHandler);
     let controls = ticketForm.querySelectorAll('.form-control');
-    Array.from(controls).forEach(elem => elem.addEventListener('focus', removeErrorMessage));
+    Array.from(controls).forEach(elem => elem.addEventListener('focus', hideMessage));
 }
 
 function ticketFormHandler(event) {
@@ -20,21 +20,26 @@ function ticketFormHandler(event) {
     try {
         res = buyTicket(bigWorld, flight, makeTime(hour, min), name, type);
     } catch (err) {
-        showError(err.message);
+        displayMessage(err.message, 'error');
         return;
     }
     bigWorld = res.world;
     console.log(bigWorld);
     form.reset();
+    displayMessage(`Reservation successful, your seat number: ${res.ticket.seat}`, 'success')
 }
 
-function showError(message) {
-    let elem = document.querySelector('.error-message');
+function displayMessage(message, type) {
+    let elem = document.querySelector('.message');
     elem.textContent = message;
     elem.style.display = 'block';
+    switch (type) {
+        case 'error': elem.style.color = 'red'; return;
+        case 'success': elem.style.color = 'green'; return;
+    }
 }
 
-function removeErrorMessage() {
-    let elem = document.querySelector('.error-message');
+function hideMessage() {
+    let elem = document.querySelector('.message');
     elem.style.display = 'none';
 }

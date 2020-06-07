@@ -19,13 +19,12 @@
     margin-bottom: 40px;
 }
 
-.form-wrapper .error-message{
+.form-wrapper .message{
     position: absolute;
     top: 15%;
     left: 0;
     display: none;
     padding: 10px 30px;
-    color: red;
 }
 
 #ticketForm div{
