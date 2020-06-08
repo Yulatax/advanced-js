@@ -6,29 +6,19 @@ function showDomTree(node, deep = 0) {
         consoleNode(node,deep);
         showDomTree(node.nextSibling, deep);
     } else {
-        deep++;
         for (let child of node.childNodes) {
             consoleNode(child,deep);
             if (child.childNodes.length > 0) {
-                showDomTree(child, deep)
+                showDomTree(child, deep + 1)
             }
         }
     }
 }
 
-function showTextNodeValue(node) {
-    if (node.nodeType !== 3) {
-        return null;
-    } else {
-        const textContent = node.nodeValue.replace(/\n/g, '\\n');
-        return `"${textContent}"`;
-    }
-}
-
 function consoleNode(node, deep) {
     const type = node.nodeType;
+    const value = type === 3 ? node.nodeValue.replace(/\n/g, '\\n') : null;
     const name = node.nodeName;
-    const value = showTextNodeValue(node);
     const spaces = '-'.repeat(deep);
     console.log(`${spaces}${type} ${name} ${value}`);
 }

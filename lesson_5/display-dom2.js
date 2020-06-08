@@ -3,8 +3,11 @@
 
 function displayNode (node, deep = 0) {
     console.log('  '.repeat(deep), node.nodeType, node.nodeName, showTextNodeValue(node));
-    for (let item = node.firstChild; item; item = item.nextSibling)
+    let item = node.firstChild;
+    while (item) {
         displayNode(item, deep + 1);
+        item = item.nextSibling;
+    }
 }
 
 function showTextNodeValue(node) {

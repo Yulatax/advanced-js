@@ -4,9 +4,8 @@
 function displayNode (node, deep = 0) {
     let str = `${' '.repeat(deep)} ${node.nodeType} ${node.nodeName} ${showTextNodeValue(node)}\n`;
     if (node.hasChildNodes()) {
-        deep++;
         for (let child of node.childNodes) {
-            str += displayNode(child, deep);
+            str += displayNode(child, deep + 1);
         }
     }
     return str;
