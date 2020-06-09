@@ -8,31 +8,31 @@ createPainting();
 document.querySelector('.palette').rows[0].cells[0].click();
 
 function createPainting() {
-    let container = document.createElement('div');
+    const container = document.createElement('div');
     container.classList.add('painting-wrapper');
-    let grid = createGrid();
+    const grid = createGrid();
     container.appendChild(grid);
-    let palette = createPalette();
+    const palette = createPalette();
     container.appendChild(palette);
     document.body.appendChild(container);
 }
 
 function createGrid() {
-    let grid = createTable(5, 5);
+    const grid = createTable(5, 5);
     grid.addEventListener('click', paint);
     return grid;
 }
 
 
 function createPalette() {
-    let palette = createTable(2, 10);
+    const palette = createTable(2, 10);
     palette.classList.add('palette');
     palette.addEventListener('click', chooseColor);
     for (let i = 0; i < palette.rows.length; i++) {
         let row = palette.rows[i];
         for (let j = 0; j < row.cells.length; j++) {
-            let cell = row.cells[j];
-            let color = getRandomColor();
+            const cell = row.cells[j];
+            const color = getRandomColor();
             cell.dataset.paletteColor = color;
             cell.style.backgroundColor = color;
         }
@@ -41,18 +41,18 @@ function createPalette() {
 }
 
 function createTable(rows, cols) {
-   let table = document.createElement('table');
+   const table = document.createElement('table');
    for (let i = 0; i < rows; i++) {
-       let row = table.insertRow(i);
+       const row = table.insertRow(i);
        for (let j = 0; j < cols; j++) {
-           let cell = row.insertCell(j);
+           const cell = row.insertCell(j);
        }
    }
    return table;
 }
 
 function getRandomColor() {
-    let letters = '0123456789ABCDEF';
+    const letters = '0123456789ABCDEF';
     let color = '#';
     for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
@@ -61,13 +61,13 @@ function getRandomColor() {
 }
 
 function chooseColor(e) {
-    let el = e.target;
+    const el = e.target;
     if (el.tagName !== 'TD') return;
     activeColor = el.dataset.paletteColor;
 }
 
 function paint(e) {
-    let el = e.target;
+    const el = e.target;
     if (el.tagName !== 'TD') return;
     console.log(activeColor);
     el.style.backgroundColor = activeColor;
