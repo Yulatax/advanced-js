@@ -26,7 +26,7 @@ function addFlight(world, airliner, time, name) {
             random(100, 999)
         ].join('');
         console.log(name);
-    };
+    }
 
     console.log(name);
 
