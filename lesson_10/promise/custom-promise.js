@@ -7,14 +7,31 @@ const CustomPromise = function (callback) {
     this.__error__ = [];
     this._callback = callback;
     this._state = PENDING;
+    this._value = null;
+
+    this._executeCallback = function (cb, result) {
+        setTimeout(() => {
+            const res = cb(result);
+            if (res instanceof CustomPromise) {
+                this.then(this._resolve.bind(res), this._reject.bind(res));
+            } else {
+                this._resolve(res)
+            }
+        }, 0)
+    };
 
     this.then = function (successCb, rejectCb) {
         if (successCb) {
             this.__success__.push(successCb);
-            console.log(this.__success__);
         }
         if (rejectCb) {
             this.__error__.push(rejectCb);
+        }
+        if (this.status === FULFILLED) {
+            this._executeCallback(successCb, this._value)
+        }
+        if (this.status === REJECTED) {
+            this._executeCallback(rejectCb, this._value)
         }
         return this;
     };
@@ -29,8 +46,11 @@ const CustomPromise = function (callback) {
             return;
         }
         this._state = FULFILLED;
-        this.__success__.forEach( cb => cb(result) );
-        console.log(this._state);
+        this._value = result;
+        // this.__success__.forEach( cb => cb(result) );
+        this.__success__.forEach( (cb) => {
+            this._executeCallback(cb, result)
+        });
     };
 
     this._reject = function (err) {
@@ -39,12 +59,27 @@ const CustomPromise = function (callback) {
             return;
         }
         this._state = REJECTED;
-        this.__error__.forEach( cb => cb(err) );
-        console.log(this._state);
+        this._value = err;
+        // this.__error__.forEach( cb => cb(err) );
+        this.__error__.forEach( (cb) => {
+            this._executeCallback(cb, err)
+        });
     };
 
     this.getState = function() {
-        return this._state;
+            return this._state;
+        };
+
+    this.resolve = function(result) {
+      try{
+          this._resolve(result)
+      } catch (err) {
+          this._reject(err)
+      }
+    };
+
+    this.reject = function(err) {
+        this._reject(err);
     };
 
     setTimeout(() => {

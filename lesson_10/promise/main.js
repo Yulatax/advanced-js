@@ -10,6 +10,6 @@ promise.then((value) => {
 }).then((value) => {
     console.log(value * 3);
 });
-// promise.catch(err => {
-//     console.log('Rejected', err);
-// });
+promise.catch(err => {
+    console.log('Rejected', err);
+});
