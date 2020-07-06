@@ -73,10 +73,10 @@ function giphySearch(event) {
 function renderGifs(data, container) {
     container.innerHTML = '';
     console.log(data);
-    for (let gif in data) {
+    data.forEach(gif => {
         const image = document.createElement('img');
-        image.src = data[gif].images.fixed_height_small_still.url;
+        image.src = gif.images.fixed_height_small_still.url;
         image.style.cssText = "padding: 5px";
         container.append(image);
-    }
+    });
 }
