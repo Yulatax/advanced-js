@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+.form-wrapper {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    border: 1px solid grey;
+    border-radius: 20px;
+    background: white;
+    color: #7b7b7b;
+    font-size: larger;
+}
+
+.form-wrapper h3 {
+    text-align: center;
+}
+
+.form-wrapper .search-form {
+    width: 90%;
+    display: flex;
+    margin-bottom: 30px;
+    align-items: flex-end;
+}
+
+.form-wrapper .search-form label,
+.form-wrapper .search-form input {
+    display: inline-block;
+    width: 100%;
+}
+
+.form-wrapper .search-form label {
+    padding: 10px;
+}
+
+.form-wrapper .search-form input {
+    background: #e6e6e6;
+    border-width: 0;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-wrapper .search-form .key-word-field {
+    width: 100%;
+    padding: 10px;
+}
+
+.gifs-wrapper {
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
